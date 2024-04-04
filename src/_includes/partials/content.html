@@ -1,15 +1,36 @@
-<div class="w-full max-w-2xl grid grid-cols-1 lg:grid-cols-2 gap-4 my-8 px-4 lg:mx-0">
-
-    {% if quicklinks.links %}
-
-        {% for item in quicklinks.links %}
-            <a href="{{item.url}}" target="_blank" class="p-5 border rounded border-gray-200 hover:border-purple-400">
-                <h3>{{item.title}}
-                    →</h3>
-                <p>{{item.desc}}</p>
-            </a>
+<div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-4 my-8 px-4 lg:mx-0">
+    <div class="overflow-x-auto">
+        <table class="table">
+            <!-- head -->
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Format</th>
+                    <th>Type</th>
+                    <th>ISO</th>
+                    <th>Number of exposures</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if collections.filmstock %}
+                    {% for filmStock in collections.filmstock %}
+                        <tr>
+                            <td>{{filmStock.data.name}}</td>
+                            <td>{{filmStock.data.format}}</td>
+                            <td>{{filmStock.data.type}}</td>
+                            <td>{{filmStock.data.iso}}</td>
+                            <td>{{filmStock.data.numOfExposures}}</td>
+                            <td>{{filmStock.data.price}}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    {# {% if collections.filmstock %}
+        {% for filmStock in collections.filmstock %}
+            {{ filmStock.data.name }}
         {% endfor %}
-
-    {% endif %}
-
+    {% endif %} #}
 </div>
